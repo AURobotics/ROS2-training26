@@ -1,0 +1,23 @@
+general_node:
+  ros__parameters:
+    # String
+    robot_name: "AU-Robotics"
+    
+    # Numbers (Float & Integer)
+    max_speed: 2.5
+    target_id: 42
+    
+    # Boolean
+    enable_safety: true
+
+    # Arrays (Lists)
+    waypoints: [1.2, 3.4, 5.6]
+    sensor_names:
+      - "front_lidar"
+      - "depth_camera"
+
+    # Nested parameters / Sub-namespaces
+    pid_gains:
+      kp: 1.5
+      ki: 0.01
+      kd: 0.2
