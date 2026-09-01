@@ -28,7 +28,7 @@ setup(
     },
     entry_points={
         'console_scripts': [
-            'service_server = session2.server:main',
+            'service_server = session2.service_server:main',
             'service_client = session2.service_client:main',
             'action_server = session2.action_server:main',
             'action_client = session2.action_client:main',
