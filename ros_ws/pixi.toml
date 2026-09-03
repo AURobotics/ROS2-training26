@@ -6,9 +6,6 @@ channels = [
     "https://prefix.dev/conda-forge",
 ]
 
-[tasks]
-build = "colcon build && source install/setup.bash"
-
 [dependencies]
 python = ">=3.12,<3.13"
 ros-jazzy-turtlesim = ">=1.8.3,<2"
