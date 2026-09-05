@@ -6,6 +6,11 @@ from turtlesim.msg import Pose
 
 TARGET_X = 10.0  # Target X coordinate for the turtle to reach
 TARGET_Y = 10.0  # Target Y coordinate for the turtle to reach
+KP_LINEAR = 1.5  # Proportional gain for linear velocity
+KP_ANGULAR = 6.0  # Proportional gain for angular velocity
+DISTANCE_TOLERANCE = 0.1  # Distance error limit to consider goal reached
+ANGLE_TOLERANCE = 0.05  # Heading alignment threshold before moving forward
+LOOP_RATE = 20  # Control loop frequency in Hz
 
 class GoToGoal(Node):
     def __init__(self):
@@ -16,12 +21,12 @@ class GoToGoal(Node):
         self.goal_y = TARGET_Y
 
         # Proportional Gains (K_p)
-        self.kp_linear = 1.5
-        self.kp_angular = 6.0
+        self.kp_linear = KP_LINEAR
+        self.kp_angular = KP_ANGULAR
 
         # Tolerances
-        self.distance_tolerance = 0.1  # Distance error limit to consider goal reached
-        self.angle_tolerance = 0.05    # Heading alignment threshold before moving forward
+        self.distance_tolerance = DISTANCE_TOLERANCE  # Distance error limit to consider goal reached
+        self.angle_tolerance = ANGLE_TOLERANCE    # Heading alignment threshold before moving forward
 
         # State Variables
         self.current_pose = None
@@ -34,7 +39,7 @@ class GoToGoal(Node):
         )
 
         # Control Loop running at 20 Hz
-        self.timer = self.create_timer(0.05, self.control_loop)
+        self.timer = self.create_timer(1.0 / LOOP_RATE, self.control_loop)
 
         self.get_logger().info(f'Navigating turtle to target goal: ({self.goal_x}, {self.goal_y})')
 
