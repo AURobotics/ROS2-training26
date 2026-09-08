@@ -1,0 +1,7 @@
+go_to_goal_bonus:
+  ros__parameters:
+    linear_gain: 1.5
+    angular_gain: 6.0
+    distance_tolerance: 0.1
+    angle_tolerance: 0.05
+    loop_rate_hz: 20.0

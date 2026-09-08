@@ -1,0 +1,6 @@
+square_client:
+  ros__parameters:
+    # Parallel arrays -- waypoints_x[i], waypoints_y[i] form waypoint i.
+    # there are other possible ways to specify waypoints
+    waypoints_x: [3.0, 3.0, 8.0, 8.0]
+    waypoints_y: [3.0, 8.0, 8.0, 3.0]

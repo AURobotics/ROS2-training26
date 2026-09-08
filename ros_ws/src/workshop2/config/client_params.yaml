@@ -1,0 +1,4 @@
+go_to_pose_action_client:
+  ros__parameters:
+    x: 8.0
+    y: 8.0
