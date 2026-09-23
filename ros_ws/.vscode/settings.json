@@ -1,3 +1,4 @@
 {
-    "python-envs.defaultEnvManager": "ms-python.python:system"
+    "python-envs.defaultEnvManager": "ms-python.python:system",
+    "cmake.sourceDirectory": "/home/abdelaziz/AU-Robotics/ROS2-training26/ros_ws/src/turtle_interfaces"
 }
