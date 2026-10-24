@@ -9,7 +9,9 @@ from rclpy.qos import QoSProfile, QoSReliabilityPolicy, QoSHistoryPolicy, QoSDur
 class Viewer(Node):
     def __init__(self):
         super().__init__('viewer_node')
-        self.bridge = CvBridge()
+
+        self.declare_parameter('topic', '/camera/image_raw')
+        topic        = self.get_parameter('topic').value
 
         # Must match the QoS settings of the publishers to avoid dropped messages
         qos_profile = QoSProfile(
@@ -18,8 +20,10 @@ class Viewer(Node):
             history=QoSHistoryPolicy.KEEP_LAST,
             depth=1
         )
+
+        self.bridge = CvBridge()
         
-        self.create_subscription(CompressedImage, '/camera/image_raw', self.camera, qos_profile)
+        self.create_subscription(CompressedImage, topic, self.camera, qos_profile)
         
         self.get_logger().info('Viewer initialized with window')
 
