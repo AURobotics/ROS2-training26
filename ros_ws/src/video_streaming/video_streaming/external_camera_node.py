@@ -34,6 +34,9 @@ class UsbCameraPublisher(Node):
         # Open capture - using OpenCV to access the USB camera
         # using OpenCV works with windows, there is more efficient ways to access the camera on Linux, but this is cross-platform
         self.cap = cv2.VideoCapture(device_index if device_index is not None else 0)
+        self.cap.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'))
+        self.cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
+        self.cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
         if not self.cap.isOpened():
             self.get_logger().error(f'Failed to open camera at index {device_index}')
             raise RuntimeError('Camera not available')
